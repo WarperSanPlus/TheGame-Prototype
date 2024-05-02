@@ -347,8 +347,10 @@
 -r:"Library/Bee/artifacts/2400b0aE.dag/UnityEngine.UI.ref.dll"
 -analyzer:"/home/warpersan/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll"
 -analyzer:"/home/warpersan/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
-"Assets/Ocean.cs"
-"Assets/OceanWave.cs"
+"Assets/Scripts/Extensions/VectorExtensions.cs"
+"Assets/Scripts/OceanWave.cs"
+"Assets/Scripts/Singletons/OceanManager.cs"
+"Assets/Scripts/Singletons/Singleton.cs"
 -langversion:9.0
 
 /deterministic

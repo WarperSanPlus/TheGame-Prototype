@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/warpersan/TheGame-WarperSan/Assembly-CSharp.csproj": {}
+    "/var/UnityGames/TheGame-Prototype/Assembly-CSharp.csproj": {}
   },
   "projects": {
-    "/home/warpersan/TheGame-WarperSan/Assembly-CSharp.csproj": {
+    "/var/UnityGames/TheGame-Prototype/Assembly-CSharp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/warpersan/TheGame-WarperSan/Assembly-CSharp.csproj",
+        "projectUniqueName": "/var/UnityGames/TheGame-Prototype/Assembly-CSharp.csproj",
         "projectName": "Assembly-CSharp",
-        "projectPath": "/home/warpersan/TheGame-WarperSan/Assembly-CSharp.csproj",
+        "projectPath": "/var/UnityGames/TheGame-Prototype/Assembly-CSharp.csproj",
         "packagesPath": "/home/warpersan/.nuget/packages/",
-        "outputPath": "/home/warpersan/TheGame-WarperSan/Temp/obj/Debug/Assembly-CSharp/",
+        "outputPath": "/var/UnityGames/TheGame-Prototype/Temp/obj/Debug/Assembly-CSharp/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/warpersan/.nuget/NuGet/NuGet.Config"

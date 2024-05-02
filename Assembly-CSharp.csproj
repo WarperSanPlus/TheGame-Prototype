@@ -64,8 +64,13 @@
     <Analyzer Include="/home/warpersan/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/OceanWave.cs" />
-    <Compile Include="Assets/Ocean.cs" />
+    <Compile Include="Assets/Scripts/Extensions/VectorExtensions.cs" />
+    <Compile Include="Assets/Scripts/Singletons/OceanManager.cs" />
+    <Compile Include="Assets/Scripts/Singletons/Singleton.cs" />
+    <Compile Include="Assets/Scripts/OceanWave.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets/sources.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

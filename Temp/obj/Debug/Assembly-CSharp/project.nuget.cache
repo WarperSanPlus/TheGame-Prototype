@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "J0AkZ/2yEppkiy1/7d7Sty/iEss5Y3+OQ6DBXnXNP7FMrvW6SO0D6x95uOUu40VvXdf49smelGREm61dL6kk8g==",
+  "dgSpecHash": "ISdCFJXcK9Jm1zTkty/PVKDu+1CjCzq2JaxXiTAojEEKBu/uPwIPv5gI8A7JgrdgNdjP4TPyUiVBKPY8UGLpYg==",
   "success": true,
-  "projectFilePath": "/home/warpersan/TheGame-WarperSan/Assembly-CSharp.csproj",
+  "projectFilePath": "/var/UnityGames/TheGame-Prototype/Assembly-CSharp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
