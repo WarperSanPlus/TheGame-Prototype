@@ -7,7 +7,7 @@ public class CameraMovement : Singletons.Singleton<CameraMovement>
 
     [SerializeField] float camSpeed = 1.0f;
     [SerializeField] private Transform trackedObject;
-    bool isLerping = true;
+    public bool isLerping = true;
 
     private void UpdateMovement(float elapsed)
     {

@@ -25,5 +25,21 @@ namespace Extensions
 
             return copy;
         }
+
+        public static Vector3 ClampAll(this Vector3 original, Vector3 maxAngles, Vector3 clampAxis)
+        {
+            var copy = original;
+
+            if (clampAxis.x != 0)
+                copy.x = Mathf.Clamp(copy.x, -maxAngles.x, maxAngles.x);
+            
+            if (clampAxis.y != 0)
+                copy.y = Mathf.Clamp(copy.y, -maxAngles.y, maxAngles.y);
+
+            if (clampAxis.z != 0)
+                copy.z = Mathf.Clamp(copy.z, -maxAngles.z, maxAngles.z);
+
+            return copy;
+        }
     }
 }
