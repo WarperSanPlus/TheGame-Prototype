@@ -3,11 +3,30 @@ using UnityEngine.InputSystem;
 
 namespace Singletons
 {
-    [RequireComponent(typeof(PlayerInput))]
+    /// <summary>
+    /// Class that manages the inputs of the player
+    /// </summary>
     public class InputMaster : Singleton<InputMaster>
     {
+        #region Delegate
+
         public delegate void LookEvent(Vector2 direction);
+        public delegate void MoveEvent(Vector2 direction);
+        public delegate void FireEvent();
+        public delegate void InteractEvent();
+
+        #endregion
+
+        #region Events
+
         public event LookEvent OnLook;
+        public event MoveEvent OnMove;
+        public event FireEvent OnFire;
+        public event InteractEvent OnInteract;
+
+        #endregion
+
+        #region Callback
 
         public void Look(InputAction.CallbackContext context)
         {
@@ -16,9 +35,6 @@ namespace Singletons
             this.OnLook?.Invoke(direction);
         }
 
-        public delegate void MoveEvent(Vector2 direction);
-        public event MoveEvent OnMove;
-
         public void Move(InputAction.CallbackContext context)
         {
             var direction = context.ReadValue<Vector2>();
@@ -26,21 +42,17 @@ namespace Singletons
             this.OnMove?.Invoke(direction);
         }
 
-        public delegate void FireEvent();
-        public event FireEvent OnFire;
-
         public void Fire(InputAction.CallbackContext context)
         {
             if (context.started)
                 this.OnFire?.Invoke();
         }
-        
-        public delegate void InteractEvent();
-        public event InteractEvent OnInteract;
 
-        public void Interact(InputAction.CallbackContext context) 
+        public void Interact(InputAction.CallbackContext context)
         {
             this.OnInteract?.Invoke();
         }
+
+        #endregion
     }
 }

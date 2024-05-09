@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/CannonTestScene.unity
+    guid: ef6acbfd2de05f70486d447e82459963
   m_configObjects: {}

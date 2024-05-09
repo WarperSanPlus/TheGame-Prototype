@@ -4,6 +4,9 @@ namespace Extensions
 {
     public static class VectorExtensions
     {
+        /// <summary>
+        /// Lerps the vector component-wise
+        /// </summary>
         public static Vector3 LerpAll(this Vector3 original, Vector3 destination, float duration)
         {
             var copy = original;
@@ -15,6 +18,9 @@ namespace Extensions
             return copy;
         }
 
+        /// <summary>
+        /// Lerps the vector component-wise using LerpAngle
+        /// </summary>
         public static Vector3 LerpAngleAll(this Vector3 original, Vector3 destination, float duration)
         {
             var copy = original;
@@ -26,6 +32,12 @@ namespace Extensions
             return copy;
         }
 
+        /// <summary>
+        /// Clamps the vector component-wise
+        /// </summary>
+        /// <param name="original">Vector to clamp</param>
+        /// <param name="maxAngles">Max angles on each axis</param>
+        /// <param name="clampAxis">Axis to clamp</param>
         public static Vector3 ClampAll(this Vector3 original, Vector3 maxAngles, Vector3 clampAxis)
         {
             var copy = original;

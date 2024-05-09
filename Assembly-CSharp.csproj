@@ -65,20 +65,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Scripts/CameraMovement.cs" />
+    <Compile Include="Assets/Scripts/Object Pools/ObjectPool.cs" />
     <Compile Include="Assets/BoatWheelInteract.cs" />
     <Compile Include="Assets/Scripts/Extensions/VectorExtensions.cs" />
+    <Compile Include="Assets/Scripts/Projectile.cs" />
     <Compile Include="Assets/Scripts/Controllers/BoatController.cs" />
+    <Compile Include="Assets/Scripts/Object Pools/TTD.cs" />
     <Compile Include="Assets/Scripts/Controllers/PlayerController.cs" />
     <Compile Include="Assets/Scripts/Singletons/ControllerManager.cs" />
+    <Compile Include="Assets/Scripts/Singletons/OceanManager.cs" />
     <Compile Include="Assets/Scripts/Controllers/CannonController.cs" />
     <Compile Include="Assets/Scripts/Interfaces/Interactable.cs" />
     <Compile Include="Assets/Scripts/Controllers/Controller.cs" />
     <Compile Include="Assets/Scripts/WheelSteer.cs" />
+    <Compile Include="Assets/Scripts/PlaneGenerator.cs" />
     <Compile Include="Assets/Scripts/Singletons/Singleton.cs" />
     <Compile Include="Assets/WorldIcon.cs" />
+    <Compile Include="Assets/Temp/Target.cs" />
     <Compile Include="Assets/FollowTarget.cs" />
-    <Compile Include="Assets/Scripts/OceanWave.cs" />
+    <Compile Include="Assets/Juan/Juan.cs" />
     <Compile Include="Assets/Scripts/Extensions/TransformExtensions.cs" />
+    <Compile Include="Assets/Scripts/Interfaces/IDespawnable.cs" />
+    <Compile Include="Assets/Scripts/DeathPlane.cs" />
+    <Compile Include="Assets/Scripts/Interfaces/ICollidable.cs" />
     <Compile Include="Assets/Scripts/Singletons/InputMaster.cs" />
   </ItemGroup>
   <ItemGroup>

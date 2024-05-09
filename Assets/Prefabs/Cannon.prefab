@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1552542341395782636}
   - component: {fileID: 2346500633563516008}
   - component: {fileID: 5661855334038371055}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cannon
   m_TagString: Untagged
   m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
@@ -74,21 +74,23 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7141800748478411159}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c278fd53220dc3eeb4a64f4e79f06bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4893991256228361551}
+  cameraAnchor: {fileID: 4893991256228361551}
   sensitivity: 7.5
   maxAngles: {x: 10, y: 45, z: 0}
   clampAxis: {x: 1, y: 1, z: 0}
   rotateWithController: 1
   disableIfOut: 1
+  icons:
+  - {fileID: 0}
   turningSpeed: {x: 0.2, y: 0.2}
   maxAnglesSelf: {x: 20, y: 75, z: 0}
   clampAxisSelf: {x: 1, y: 1, z: 0}
-  ball: {fileID: 0}
+  ball: {fileID: 4975647950976272312, guid: cedf0484f83b62090894dd67b49c4d16, type: 3}
   origin: {fileID: 2477084520518651752}
   strength: 900
 --- !u!65 &5661855334038371055
@@ -110,8 +112,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.56287676, y: 0.8108233, z: 0.7516995}
-  m_Center: {x: 0, y: 0.20476077, z: 0.28335658}
+  m_Size: {x: 0.32267398, y: 0.8108233, z: 0.85701025}
+  m_Center: {x: 0, y: 0.20476086, z: 0.23070125}
 --- !u!1 &8612090493364798231
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +216,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: c5a28d8148d4783b9b3687342fc9775b, type: 3}
       propertyPath: m_Name
       value: top
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5a28d8148d4783b9b3687342fc9775b, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

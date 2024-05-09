@@ -47,7 +47,6 @@ namespace Extensions
                 rotation += offset.Value;
 
             target.eulerAngles = rotation;
-            //target.rotation = Quaternion.Euler(rotation);
             return copy;
         }
     }

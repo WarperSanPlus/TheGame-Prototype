@@ -4,6 +4,9 @@ namespace Interfaces
 {
     public interface Interactable
     {
+        /// <summary>
+        /// Called when something interacted with this object
+        /// </summary>
         public void OnClick();
 
         /// <summary>
@@ -17,9 +20,15 @@ namespace Interfaces
             Interact(interactable);
         }
 
+        /// <summary>
+        /// Checks if the ray touches something to interact with
+        /// </summary>
+        /// <returns>Is there something to interact with?</returns>
         public static bool CanInteract(Vector3 position, Vector3 direction, out Interactable interactable, float? maxDistance = null)
         {
-            if (!Physics.Raycast(position, direction, out var hit, maxDistance ?? float.MaxValue))
+            var layer = 1 << LayerMask.NameToLayer("Interact");
+
+            if (!Physics.Raycast(position, direction, out var hit, maxDistance ?? float.MaxValue, layer))
             {
                 interactable = null;
                 return false;
@@ -27,6 +36,13 @@ namespace Interfaces
 
             return hit.collider.gameObject.TryGetComponent(out interactable);
         }
+
+        /// <summary>
+        /// Checks if the ray touches something to interact with
+        /// </summary>
+        /// <returns>Is there something to interact with?</returns>
+        public static bool CanInteract(Vector3 position, Vector3 direction, float? maxDistance = null)
+            => CanInteract(position, direction, out _, maxDistance);
 
         /// <summary>
         /// Starts an interaction with the given target

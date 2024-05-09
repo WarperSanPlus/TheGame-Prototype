@@ -9,8 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6395289233910498075}
+  - component: {fileID: 8054605069742326497}
   - component: {fileID: 204462015786485883}
   - component: {fileID: 6959068261859578340}
+  - component: {fileID: -1199585295186916636}
   m_Layer: 0
   m_Name: Beach Ball
   m_TagString: Untagged
@@ -34,6 +36,18 @@ Transform:
   - {fileID: 5160719030004373960}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8054605069742326497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4975647950976272312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be40471ba973b19d921844be9ff0cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &204462015786485883
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -81,7 +95,20 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
+--- !u!114 &-1199585295186916636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4975647950976272312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db2a666a1283a0e53a36054e1a18d193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 10
 --- !u!1001 &4617376953303776803
 PrefabInstance:
   m_ObjectHideFlags: 0

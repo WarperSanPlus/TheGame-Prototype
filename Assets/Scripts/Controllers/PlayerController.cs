@@ -7,7 +7,7 @@ namespace Controllers
     /// <summary>
     /// Controller that manages how the player behaves
     /// </summary>
-    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(Animator))]
     public class PlayerController : Controller
     {
@@ -20,23 +20,31 @@ namespace Controllers
         [SerializeField, Tooltip("Determines the sprite to use when no interaction is available")]
         private Sprite normalCursor;
 
-        [SerializeField]
+        [SerializeField, Tooltip("Image that represents the cursor")]
         private Image cursor;
 
         [SerializeField, Min(0), Tooltip("Determines how far the player can interact with things")]
         private float interactRange = 0;
 
+        /// <summary>
+        /// Updates the cursor depending on the possible interactions
+        /// </summary>
         private void UpdateCursor() => this.cursor.sprite = Interfaces.Interactable.CanInteract(
             this.transform.position,
-            this.target.forward,
-            out _,
+            this.cameraAnchor.forward,
             this.interactRange
         ) ? this.interactCursor : this.normalCursor;
 
+        /// <summary>
+        /// Sets the cursor's visibility to the given visibility
+        /// </summary>
+        /// <param name="visible">Will the cursor be visible or not?</param>
         private void SetCursor(bool visible)
         {
-            if (this.cursor != null)
-                this.cursor.enabled = visible;
+            if (this.cursor == null)
+                return;
+
+            this.cursor.enabled = visible;
         }
 
         #endregion
@@ -47,29 +55,57 @@ namespace Controllers
         [SerializeField, Tooltip("Determines how fast the player can move")]
         private float movementSpeed = 20;
 
-        private CharacterController cc;
+        private Rigidbody rb;
         private Animator animator;
 
         private Vector3 direction;
 
+        /// <summary>
+        /// Updates the movement of the player
+        /// </summary>
+        /// <param name="facing">Direction of the movement</param>
+        /// <param name="speed">Speed of the movement</param>
+        /// <param name="elapsed">Time passed since the last frame</param>
         private void UpdateMove(Vector3 facing, float speed, float elapsed)
         {
-            if (this.target == null || this.cc == null)
+            // Skip if anchor or rigidbody not found
+            if (this.cameraAnchor == null || this.rb == null)
                 return;
 
-            var direction = (this.target.transform.forward * facing.y) + (this.target.transform.right * facing.x);
+            var direction = (this.cameraAnchor.transform.forward * facing.y) + (this.cameraAnchor.transform.right * facing.x);
 
             var isWalking = direction.magnitude > 0;
+            
+            // Prevent walking in the air
             if (isWalking)
                 direction.y = 0;
 
+            // Update animator
             if (this.animator != null)
                 this.animator.SetBool("Walking", isWalking);
 
+            // Modify the direction
             direction = direction.normalized * speed;
-            direction += Vector3.down;
+            //direction += Vector3.down;
 
-            _ = this.cc.Move(direction * elapsed);
+            // Move the character controller
+            this.rb.MovePosition(this.rb.position + direction * elapsed);
+        }
+
+        #endregion
+
+        #region Respawn
+
+        [Header("Respawn")]
+        [SerializeField, Tooltip("Determines where the player respawns")]
+        private Transform spawnPoint;
+
+        public void Respawn()
+        {
+            // Teleport back to origin
+            var position = this.spawnPoint == null ? Vector3.zero : this.spawnPoint.position;
+            
+            this.transform.position = position;
         }
 
         #endregion
@@ -80,6 +116,10 @@ namespace Controllers
         [SerializeField, Tooltip("GameObject to hide when the controller is no longer used")]
         private GameObject hideWhenOut;
 
+        /// <summary>
+        /// Sets the visibility of the target object
+        /// </summary>
+        /// <param name="visible">Should the target be visible or not?</param>
         private void SetVisible(bool visible)
         {
             if (this.hideWhenOut == null)
@@ -95,46 +135,59 @@ namespace Controllers
         /// <inheritdoc/>
         protected override void OnStart()
         {
-            this.cc = this.GetComponent<CharacterController>();
+            // Get components
             this.animator = this.GetComponent<Animator>();
+            this.rb = this.GetComponent<Rigidbody>();
 
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
+            // Start with this controller
             ControllerManager.SwitchTo(this);
         }
 
         /// <inheritdoc/>
         protected override void OnUpdate(float elapsed)
         {
-            this.UpdateMove(this.direction, this.movementSpeed, elapsed);
-
-            if (this.target != null)
+            if (this.cameraAnchor != null)
             {
-                this.transform.rotation = Quaternion.Euler(0, this.target.rotation.eulerAngles.y, 0);
+                this.transform.rotation = Quaternion.Euler(0, this.cameraAnchor.rotation.eulerAngles.y, 0);
             }
 
             this.UpdateCursor();
         }
 
         /// <inheritdoc/>
+        protected override void OnFixedUpdate(float elapsed) 
+        {
+            this.UpdateMove(this.direction, this.movementSpeed, elapsed);
+        }
+
+        /// <inheritdoc/>
         protected override void OnMove(Vector2 direction) => this.direction = direction;
 
         /// <inheritdoc/>
-        protected override void OnFire() => Interfaces.Interactable.TryInteract(this.transform.position, this.target.forward, this.interactRange);
+        protected override void OnFire() => Interfaces.Interactable.TryInteract(this.transform.position, this.cameraAnchor.forward, this.interactRange);
 
         /// <inheritdoc/>
         protected override void OnSwitchIn()
         {
+            // Update cursor
             this.SetCursor(true);
+            this.SetCursorLock(true);
+
+            // Set visible
             this.SetVisible(true);
+            
+            // Reset direction
             this.direction = Vector2.zero;
         }
 
         /// <inheritdoc/>
         protected override void OnSwitchOut()
         {
+            // Update cursor
             this.SetCursor(false);
+            this.SetCursorLock(false);
+
+            // Set visible
             this.SetVisible(false);
         }
 

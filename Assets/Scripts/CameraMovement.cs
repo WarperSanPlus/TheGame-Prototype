@@ -5,10 +5,15 @@ public class CameraMovement : Singletons.Singleton<CameraMovement>
 {
     private const float LERP_THRESHOLD = 0.5f;
 
-    [SerializeField] float camSpeed = 1.0f;
-    [SerializeField] private Transform trackedObject;
-    public bool isLerping = true;
+    [SerializeField, Tooltip("Determines how fast the camera moves")] 
+    private float camSpeed = 1.0f;
+    private Transform trackedObject;
+    private bool isLerping = true;
 
+    /// <summary>
+    /// Updates the movement of the camera
+    /// </summary>
+    /// <param name="elapsed">Time passed since the last frame</param>
     private void UpdateMovement(float elapsed)
     {
         if (this.trackedObject == null)
@@ -22,9 +27,12 @@ public class CameraMovement : Singletons.Singleton<CameraMovement>
         this.transform.LerpToTarget(this.trackedObject, duration);
     }
 
+    /// <summary>
+    /// Updates the controller to follow
+    /// </summary>
     public void SetController(Controllers.Controller controller, bool teleportToTarget = true) 
     {
-        this.trackedObject = controller.target;
+        this.trackedObject = controller.cameraAnchor;
         this.isLerping = !teleportToTarget;
 
         this.UpdateMovement(0);
@@ -32,8 +40,8 @@ public class CameraMovement : Singletons.Singleton<CameraMovement>
 
     #region MonoBehaviour
 
-    // Update is called once per frame
-    void Update() => this.UpdateMovement(Time.deltaTime);
+    /// <inheritdoc/>
+    private void Update() => this.UpdateMovement(Time.deltaTime);
 
     #endregion
 }
