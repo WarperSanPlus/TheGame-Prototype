@@ -100,6 +100,9 @@ namespace Controllers
         [SerializeField, Tooltip("Determines where the player respawns")]
         private Transform spawnPoint;
 
+        /// <summary>
+        /// Respawns the player
+        /// </summary>
         public void Respawn()
         {
             // Teleport back to origin

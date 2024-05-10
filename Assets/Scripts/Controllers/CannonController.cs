@@ -43,7 +43,8 @@ namespace Controllers
         #region Shoot
 
         [Header("Cannon Shoot")]
-        public GameObject ball;
+        [SerializeField, Tooltip("Prefab that the cannon will shoot")]
+        private GameObject ball;
 
         [SerializeField, Tooltip("Determines the origin and the direction of the shot")]
         private Transform origin;

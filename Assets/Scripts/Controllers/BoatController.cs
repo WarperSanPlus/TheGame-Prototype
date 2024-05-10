@@ -82,6 +82,9 @@ namespace Controllers
 
         private readonly List<Rigidbody> aboardItems = new();
 
+        /// <summary>
+        /// Updates the position of all the items aboard
+        /// </summary>
         private void UpdateAboard(Vector3 movement)
         {
             foreach (var item in this.aboardItems)
