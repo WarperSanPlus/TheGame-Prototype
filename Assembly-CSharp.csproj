@@ -64,13 +64,12 @@
     <Analyzer Include="/home/warpersan/Unity/Hub/Editor/2022.3.18f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/Scripts/CameraMovement.cs" />
     <Compile Include="Assets/Scripts/Object Pools/ObjectPool.cs" />
-    <Compile Include="Assets/BoatWheelInteract.cs" />
     <Compile Include="Assets/Scripts/Extensions/VectorExtensions.cs" />
     <Compile Include="Assets/Scripts/Projectile.cs" />
     <Compile Include="Assets/Scripts/Controllers/BoatController.cs" />
     <Compile Include="Assets/Scripts/Object Pools/TTD.cs" />
+    <Compile Include="Assets/Scripts/InteractScripts/BoatWheelInteract.cs" />
     <Compile Include="Assets/Scripts/Controllers/PlayerController.cs" />
     <Compile Include="Assets/Scripts/Singletons/ControllerManager.cs" />
     <Compile Include="Assets/Scripts/Singletons/OceanManager.cs" />

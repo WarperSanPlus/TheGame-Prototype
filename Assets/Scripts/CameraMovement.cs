@@ -1,6 +1,9 @@
 using Extensions;
 using UnityEngine;
 
+/// <summary>
+/// Moves the camera to the given object
+/// </summary>
 public class CameraMovement : Singletons.Singleton<CameraMovement>
 {
     private const float LERP_THRESHOLD = 0.5f;
