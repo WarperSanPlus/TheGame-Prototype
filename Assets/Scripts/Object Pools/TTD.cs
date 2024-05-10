@@ -8,8 +8,8 @@ namespace ObjectPools
     /// </summary>
     public class TTD : MonoBehaviour, IDespawnable
     {
-        [SerializeField, Min(0), Tooltip("Amount of seconds before this GameObject despawns naturally")]
-        private float time = 10;
+        [Min(0), Tooltip("Amount of seconds before this GameObject despawns naturally")]
+        public float time = 10;
         private float remaining = 0;
 
         /// <summary>

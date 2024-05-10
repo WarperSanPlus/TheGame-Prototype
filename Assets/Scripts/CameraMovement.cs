@@ -47,4 +47,11 @@ public class CameraMovement : Singletons.Singleton<CameraMovement>
     private void Update() => this.UpdateMovement(Time.deltaTime);
 
     #endregion
+
+    #region Singleton
+
+    /// <inheritdoc/>
+    protected override bool DestroyOnLoad => true;
+
+    #endregion
 }

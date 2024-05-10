@@ -63,7 +63,10 @@ namespace Singletons
         /// </summary>
         public static void BackTo(bool teleportToTarget = true)
         {
-            var previous = stack.Count > 1 ? stack.Skip(1).First() : null;
+            if (stack.Count <= 1)
+                return;
+
+            var previous = stack.Skip(1).First();
             ReplaceCurrent(previous, teleportToTarget);
         }
     }

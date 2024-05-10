@@ -37,3 +37,8 @@ https://www.mixamo.com
 MenuUI:
 https://www.vectorstock.com/royalty-free-vector/wood-pirate-ui-game-frame-and-board-button-vector-49716533
 
+Seagull:
+https://sketchfab.com/3d-models/low-poly-seagull-animated-bff3cd3d48e249e8b5afa7416c6c39f8
+
+Seagull ambient noise:
+https://quicksounds.com/sound/4317/seagulls-chirping-overhead
