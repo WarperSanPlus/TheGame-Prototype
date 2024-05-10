@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Singletons\ControllerManager.cs" />
     <Compile Include="Assets\Scripts\Singletons\OceanManager.cs" />
+    <Compile Include="Assets\Scripts\MenuUI\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Controllers\CannonController.cs" />
     <Compile Include="Assets\Scripts\Interfaces\Interactable.cs" />
     <Compile Include="Assets\Scripts\Controllers\Controller.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\FollowTarget.cs" />
     <Compile Include="Assets\Juan\Juan.cs" />
     <Compile Include="Assets\Scripts\Extensions\TransformExtensions.cs" />
+    <Compile Include="Assets\Scripts\MenuUI\PauseMenu.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IDespawnable.cs" />
     <Compile Include="Assets\Scripts\DeathPlane.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ICollidable.cs" />
