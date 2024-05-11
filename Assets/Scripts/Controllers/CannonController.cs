@@ -52,6 +52,12 @@ namespace Controllers
         [SerializeField, Min(0), Tooltip("Determines how much force is put on the projectile upon launch")]
         private float strength;
 
+        [SerializeField]
+        private ParticleSystem shootParticles;
+
+        [SerializeField]
+        private AudioSource shootAudio;
+
         /// <summary>
         /// Shoots a shot
         /// </summary>
@@ -72,6 +78,12 @@ namespace Controllers
                 rb.velocity = Vector3.zero;
                 rb.AddRelativeForce(new Vector3(0, this.strength, 0));
             }
+
+            if (this.shootParticles != null)
+                this.shootParticles.Play();
+
+            if (this.shootAudio != null)
+                this.shootAudio.Play();
         }
 
         #endregion

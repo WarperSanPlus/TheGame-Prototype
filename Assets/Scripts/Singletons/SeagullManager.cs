@@ -77,6 +77,7 @@ namespace Singletons
 
         #endregion
 
+#if UNITY_EDITOR
         #region Gizmos
 
         /// <inheritdoc/>
@@ -87,6 +88,7 @@ namespace Singletons
         }
 
         #endregion
+#endif
 
         #region Singleton
 

@@ -59,7 +59,7 @@ namespace ObjectPools
                 return instance;
 
 #if UNITY_EDITOR
-            Debug.LogWarning("Consider increasing the base amount of '{}' if the limit is reached frequently.");
+            Debug.LogWarning($"Consider increasing the base amount of '{this.prefab.name}' if the limit is reached frequently.");
 #endif
             return this.Spawn();
         }

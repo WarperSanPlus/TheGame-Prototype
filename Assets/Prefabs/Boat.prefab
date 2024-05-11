@@ -2972,7 +2972,7 @@ MonoBehaviour:
   disableIfOut: 0
   icons:
   - {fileID: 8423580865570998670}
-  - {fileID: 0}
+  - {fileID: 4142489962262532680}
   movementSpeed: 1
   movementAcceleration: 0.01
   movementDeceleration: 0.005

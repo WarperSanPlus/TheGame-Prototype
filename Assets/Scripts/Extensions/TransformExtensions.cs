@@ -49,5 +49,18 @@ namespace Extensions
             target.eulerAngles = rotation;
             return copy;
         }
+
+        /// <summary>
+        /// Distances between two transform
+        /// </summary>
+        /// <returns></returns>
+        public static float Distance(this Transform self, Transform target)
+        {
+            // If either is invalid, return 0
+            if (self == null || target == null)
+                return 0;
+
+            return Vector3.Distance(self.position, target.position);
+        }
     }
 }
