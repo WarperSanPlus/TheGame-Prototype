@@ -21,7 +21,8 @@ namespace Singletons
 
         public event LookEvent OnLook;
         public event MoveEvent OnMove;
-        public event FireEvent OnFire;
+        public event FireEvent OnFireStart;
+        public event FireEvent OnFireEnd;
         public event InteractEvent OnInteract;
 
         #endregion
@@ -45,7 +46,9 @@ namespace Singletons
         public void Fire(InputAction.CallbackContext context)
         {
             if (context.started)
-                this.OnFire?.Invoke();
+                this.OnFireStart?.Invoke();
+            else if (context.canceled)
+                this.OnFireEnd?.Invoke();
         }
 
         public void Interact(InputAction.CallbackContext context)

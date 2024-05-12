@@ -15,11 +15,6 @@ namespace Controllers
         protected virtual void OnMove(Vector2 direction) { }
 
         /// <summary>
-        /// Called when the player presses the 'Fire' button
-        /// </summary>
-        protected virtual void OnFire() { }
-
-        /// <summary>
         /// Called when the player presses the 'Interact' button
         /// </summary>
         protected virtual void OnInteract() => ControllerManager.BackTo(true);
@@ -88,7 +83,8 @@ namespace Controllers
             // Subscribe all
             InputMaster.Instance.OnLook += this.OnLook;
             InputMaster.Instance.OnMove += this.OnMove;
-            InputMaster.Instance.OnFire += this.OnFire;
+            InputMaster.Instance.OnFireStart += this.OnFireStart;
+            InputMaster.Instance.OnFireEnd += this.OnFireEnd;
             InputMaster.Instance.OnInteract += this.OnInteract;
 
             // Update enable states
@@ -107,7 +103,8 @@ namespace Controllers
             // Unsubscribe all
             InputMaster.Instance.OnLook -= this.OnLook;
             InputMaster.Instance.OnMove -= this.OnMove;
-            InputMaster.Instance.OnFire -= this.OnFire;
+            InputMaster.Instance.OnFireStart -= this.OnFireStart;
+            InputMaster.Instance.OnFireEnd -= this.OnFireEnd;
             InputMaster.Instance.OnInteract -= this.OnInteract;
 
             // Update enable states
@@ -131,6 +128,20 @@ namespace Controllers
         /// Called when this controller is no longer being used
         /// </summary>
         protected virtual void OnSwitchOut() { }
+
+        #endregion
+
+        #region Fire
+
+        /// <summary>
+        /// Called when the player presses the 'Fire' button
+        /// </summary>
+        protected virtual void OnFireStart() { }
+
+        /// <summary>
+        /// Called when the player releases the 'Fire' button
+        /// </summary>
+        protected virtual void OnFireEnd() {}
 
         #endregion
 

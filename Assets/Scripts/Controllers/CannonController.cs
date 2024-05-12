@@ -2,6 +2,7 @@ using Extensions;
 using Interfaces;
 using Singletons;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Controllers
 {
@@ -52,6 +53,9 @@ namespace Controllers
         [SerializeField, Min(0), Tooltip("Determines how much force is put on the projectile upon launch")]
         private float strength;
 
+        [SerializeField, Min(0), Tooltip("Determines the base force of the projectile, no matter the thrust applied")]
+        private float baseStrength;
+
         [SerializeField]
         private ParticleSystem shootParticles;
 
@@ -61,7 +65,7 @@ namespace Controllers
         /// <summary>
         /// Shoots a shot
         /// </summary>
-        private void Shoot()
+        private void Shoot(float forcePercent)
         {
             var projectile = ObjectPools.ObjectPool.GetObject(this.ball);
 
@@ -76,7 +80,7 @@ namespace Controllers
             {
                 // Apply initial velocity
                 rb.velocity = Vector3.zero;
-                rb.AddRelativeForce(new Vector3(0, this.strength, 0));
+                rb.AddRelativeForce(new Vector3(0, (this.strength * forcePercent) + this.baseStrength, 0));
             }
 
             if (this.shootParticles != null)
@@ -88,13 +92,87 @@ namespace Controllers
 
         #endregion
 
+        #region Thrust
+
+        [Header("Thrust")]
+        [SerializeField, Tooltip("Object to activate to show the thrust meter")]
+        private GameObject thrustCanvas;
+
+        [SerializeField, Tooltip("Image that shows the progress of the meter")]
+        private Image thrustIcon;
+
+        [SerializeField, Tooltip("Gradient that determines the colors to use")]
+        private Gradient thrustColor;
+
+        private float thrustAmount = 0;
+        private float thrustMultiplier = 1;
+
+        /// <summary>
+        /// Updates the thurst amount
+        /// </summary>
+        /// <param name="elapsed">Time passed since the last frame</param>
+        private void UpdateThrust(float elapsed)
+        {
+            this.thrustAmount += elapsed * this.thrustMultiplier;
+
+            if (this.thrustAmount >= 1)
+            {
+                this.thrustAmount = 1 - (this.thrustAmount - 1);
+                this.thrustMultiplier = -1;
+            }
+            else if (this.thrustAmount <= 0)
+            {
+                this.thrustAmount = -this.thrustAmount;
+                this.thrustMultiplier = 1;
+            }
+
+            // If icon invalid, skip
+            if (this.thrustIcon == null)
+                return;
+
+            // Set the fill and the color
+            this.thrustIcon.fillAmount = this.thrustAmount;
+            this.thrustIcon.color = this.thrustColor.Evaluate(this.thrustAmount);
+        }
+
+        /// <summary>
+        /// Enables the thrust metter
+        /// </summary>
+        private void StartThrust()
+        {
+            this.thrustAmount = 0;
+            this.thrustMultiplier = 1;
+            this.UpdateThrust(0);
+
+            if (this.thrustCanvas != null)
+                this.thrustCanvas.SetActive(true);
+        }
+
+        /// <summary>
+        /// Disables the thurst metetr
+        /// </summary>
+        private void EndThrust()
+        {
+            if (this.thrustCanvas != null)
+                this.thrustCanvas.SetActive(false);
+        }
+
+        #endregion
+
         #region Controller
 
         /// <inheritdoc/>
         protected override void OnMove(Vector2 direction) => this.direction = direction;
 
         /// <inheritdoc/>
-        protected override void OnFire() => this.Shoot();
+        protected override void OnFireStart() => this.StartThrust();
+
+        /// <inheritdoc/>
+        protected override void OnFireEnd() 
+        {
+            this.Shoot(this.thrustAmount);
+            this.EndThrust();
+        }
 
         /// <inheritdoc/>
         protected override void OnSwitchIn()
@@ -116,6 +194,8 @@ namespace Controllers
             this.SetIconsVisibility(true);
             this.SetCursorLock(false);
 
+            this.EndThrust();
+
             // Put back the cannon at it's default rotation
             this.transform.eulerAngles = this.defaultRotation;
         }
@@ -125,6 +205,8 @@ namespace Controllers
         {
             if (this.direction.magnitude != 0)
                 this.UpdateRotation(new Vector3(-this.direction.y, this.direction.x, 0));
+
+            this.UpdateThrust(elapsed);
         }
 
         #endregion

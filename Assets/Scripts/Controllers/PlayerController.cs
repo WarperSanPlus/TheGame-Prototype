@@ -29,11 +29,23 @@ namespace Controllers
         /// <summary>
         /// Updates the cursor depending on the possible interactions
         /// </summary>
-        private void UpdateCursor() => this.cursor.sprite = Interfaces.Interactable.CanInteract(
-            this.transform.position,
-            this.cameraAnchor.forward,
-            this.interactRange
-        ) ? this.interactCursor : this.normalCursor;
+        private void UpdateCursor() 
+        {
+            // If cursor invalid, skip
+            if (this.cursor == null)
+                return;
+
+            if (Interfaces.Interactable.CanInteract(this.transform.position, this.cameraAnchor.forward, this.interactRange))
+            {
+                this.cursor.sprite = this.interactCursor;
+                this.cursor.rectTransform.sizeDelta = new Vector2(50, 50);
+            }
+            else
+            {
+                this.cursor.sprite = this.normalCursor;
+                this.cursor.rectTransform.sizeDelta = new Vector2(10, 10);
+            }
+        }
 
         /// <summary>
         /// Sets the cursor's visibility to the given visibility
@@ -167,7 +179,7 @@ namespace Controllers
         protected override void OnMove(Vector2 direction) => this.direction = direction;
 
         /// <inheritdoc/>
-        protected override void OnFire() => Interfaces.Interactable.TryInteract(this.transform.position, this.cameraAnchor.forward, this.interactRange);
+        protected override void OnFireStart() => Interfaces.Interactable.TryInteract(this.transform.position, this.cameraAnchor.forward, this.interactRange);
 
         /// <inheritdoc/>
         protected override void OnSwitchIn()
