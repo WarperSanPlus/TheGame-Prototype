@@ -267,6 +267,26 @@ PrefabInstance:
       propertyPath: target2
       value: 
       objectReference: {fileID: 535587311}
+    - target: {fileID: 1352460092476160847, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
+      propertyPath: walkMaxRange
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352460092476160847, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
+      propertyPath: walkMinRange
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352460092476160847, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
+      propertyPath: stompMinRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352460092476160847, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
+      propertyPath: throwMaxRange
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352460092476160847, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
+      propertyPath: throwMinRange
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 2299043160876084653, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 8.413727

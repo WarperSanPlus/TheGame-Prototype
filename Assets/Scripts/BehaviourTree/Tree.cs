@@ -7,9 +7,7 @@ namespace BehaviourTree
     {
         private Node root = null;
 
-        private void Start() {
-            this.root = this.SetUpTree();
-        }
+        private void Start() => this.RefreshTree();
 
         private void Update() 
         {
@@ -17,5 +15,7 @@ namespace BehaviourTree
         }
 
         protected abstract Node SetUpTree();
+
+        public void RefreshTree() => this.root = this.SetUpTree();
     }
 }

@@ -13,20 +13,26 @@ namespace BehaviourTree.Trees
         }
 
         public Transform target1;
+        public float throwMinRange;
+        public float throwMaxRange;
+        public float walkMinRange;
+        public float walkMaxRange;
+        public float stompMinRange;
 
         protected override Node SetUpTree()
         {
             var target = "currentTarget";
 
             var root = new Selector(
-                this.Throw(target, 10, 25),
-                this.WalkToTarget(target, 7.5f, 50),
-                new CallbackNode(n => this.SetWalking(false), NodeState.FAILURE),
-                this.Stomp(target, 3),
-                new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE)
+                //this.Throw(target, this.throwMinRange, this.throwMaxRange),
+                //new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE),
+                this.WalkToTarget(target, this.walkMinRange, this.walkMaxRange),
+                new CallbackNode(n => this.SetWalking(false), NodeState.FAILURE)
+                //this.Stomp(target, this.stompMinRange),
+                //new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE)
             );
 
-            root.SetData(MoveToTarget.SPEED, 0.001f);
+            root.SetData(MoveToTarget.SPEED, 0.01f);
             root.SetData(target, this.target1);
 
             return root;
@@ -71,7 +77,7 @@ namespace BehaviourTree.Trees
         {
             var minLimit = new DistanceGreater(this.transform, target, minDistance);
             var maxLimit = new DistanceSmaller(this.transform, target, maxDistance);
-            var action = new AnimationNode(this.animator, a => SetAttack(a, GolemAttackFlags.Throw));
+            var action = new AnimationNode(this.animator, 2f, 2.917f, a => SetAttack(a, GolemAttackFlags.Throw));
 
             return new Sequence(
                 // Has to be more than minDistance
@@ -99,6 +105,24 @@ namespace BehaviourTree.Trees
             animator.SetBool("IsAttacking", attack != GolemAttackFlags.None);
         }
 
+        #endregion
+
+        #region Gizmos
+#if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            UnityEditor.Handles.color = Color.yellow;
+            UnityEditor.Handles.DrawWireDisc(this.transform.position, this.transform.up, this.stompMinRange);
+
+            UnityEditor.Handles.color = Color.red;
+            UnityEditor.Handles.DrawWireDisc(this.transform.position, this.transform.up, this.throwMinRange);
+            UnityEditor.Handles.DrawWireDisc(this.transform.position, this.transform.up, this.throwMaxRange);
+
+            UnityEditor.Handles.color = Color.blue;
+            UnityEditor.Handles.DrawWireDisc(this.transform.position, this.transform.up, this.walkMinRange);
+            UnityEditor.Handles.DrawWireDisc(this.transform.position, this.transform.up, this.walkMaxRange);
+        }
+#endif
         #endregion
     }
 }
