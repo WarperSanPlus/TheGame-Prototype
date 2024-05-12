@@ -67,6 +67,7 @@
     <Compile Include="Assets/Scripts/Utilities/PlaneGenerator.cs" />
     <Compile Include="Assets/Scripts/Utilities/RotateByVector.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/AnimationNode.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/Projectile.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/DistanceNode.cs" />
     <Compile Include="Assets/Scripts/CameraMovement.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Selector.cs" />
@@ -74,7 +75,6 @@
     <Compile Include="Assets/Scripts/Object Pools/ObjectPool.cs" />
     <Compile Include="Assets/Scripts/AudioObject.cs" />
     <Compile Include="Assets/Scripts/Extensions/VectorExtensions.cs" />
-    <Compile Include="Assets/Scripts/Projectile.cs" />
     <Compile Include="Assets/Scripts/Controllers/BoatController.cs" />
     <Compile Include="Assets/Scripts/Object Pools/TTD.cs" />
     <Compile Include="Assets/Scripts/InteractScripts/BoatWheelInteract.cs" />
@@ -87,6 +87,7 @@
     <Compile Include="Assets/Scripts/Singletons/OceanManager.cs" />
     <Compile Include="Assets/Scripts/MenuUI/MainMenu.cs" />
     <Compile Include="Assets/Scripts/Controllers/CannonController.cs" />
+    <Compile Include="Assets/Scripts/InteractScripts/TuxCatInteract.cs" />
     <Compile Include="Assets/Scripts/WorldIcon.cs" />
     <Compile Include="Assets/Scripts/Interfaces/Interactable.cs" />
     <Compile Include="Assets/Scripts/Controllers/Controller.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Assets/Scripts/WheelSteer.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Parallel.cs" />
     <Compile Include="Assets/Scripts/Singletons/Singleton.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/BeachBall.cs" />
     <Compile Include="Assets/Scripts/Singletons/SeagullManager.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/MoveToTarget.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Sequence.cs" />

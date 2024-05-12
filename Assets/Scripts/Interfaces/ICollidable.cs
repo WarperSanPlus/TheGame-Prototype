@@ -9,6 +9,6 @@ namespace Interfaces
         /// Called when a projectile collided with this object
         /// </summary>
         /// <param name="source">Projectile that caused the collision</param>
-        public void OnCollision(Projectile source);
+        public void OnCollision(Projectiles.Projectile source);
     }
 }

@@ -1,4 +1,5 @@
 using Interfaces;
+using Projectiles;
 using UnityEngine;
 
 /// <summary>

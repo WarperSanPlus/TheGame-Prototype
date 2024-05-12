@@ -83,6 +83,11 @@ namespace Controllers
                 rb.AddRelativeForce(new Vector3(0, (this.strength * forcePercent) + this.baseStrength, 0));
             }
 
+            if (projectile.TryGetComponent(out Projectiles.BeachBall beachBall))
+            {
+                beachBall.force = forcePercent;
+            }
+
             if (this.shootParticles != null)
                 this.shootParticles.Play();
 
@@ -106,6 +111,7 @@ namespace Controllers
 
         private float thrustAmount = 0;
         private float thrustMultiplier = 1;
+        private bool releaseForShoot = false;
 
         /// <summary>
         /// Updates the thurst amount
@@ -140,6 +146,7 @@ namespace Controllers
         /// </summary>
         private void StartThrust()
         {
+            this.releaseForShoot = true;
             this.thrustAmount = 0;
             this.thrustMultiplier = 1;
             this.UpdateThrust(0);
@@ -153,6 +160,7 @@ namespace Controllers
         /// </summary>
         private void EndThrust()
         {
+            this.releaseForShoot = false;
             if (this.thrustCanvas != null)
                 this.thrustCanvas.SetActive(false);
         }
@@ -170,7 +178,8 @@ namespace Controllers
         /// <inheritdoc/>
         protected override void OnFireEnd() 
         {
-            this.Shoot(this.thrustAmount);
+            if (this.releaseForShoot)
+                this.Shoot(this.thrustAmount);
             this.EndThrust();
         }
 

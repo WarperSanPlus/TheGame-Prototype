@@ -607,6 +607,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 553045439}
   m_Mesh: {fileID: 0}
+--- !u!1 &553262127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553262128}
+  - component: {fileID: 553262129}
+  m_Layer: 0
+  m_Name: WaterFX Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &553262128
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553262127}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.47880512, y: 2.2976987, z: -4.563965}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &553262129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553262127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382ba039df4291c8b86b743614d2caa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2775051055340396622, guid: 27f51cc3d94120ea0bc4ab4ac15ba000, type: 3}
+  preAmount: 20
+  hardCap: 2147483647
 --- !u!1 &704786444
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6283901322987064102, guid: 87ba6851d412073e5bfc698129e70cef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6283901322987064102, guid: 87ba6851d412073e5bfc698129e70cef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1894,5 +1941,6 @@ SceneRoots:
   - {fileID: 1972735261}
   - {fileID: 704786445}
   - {fileID: 1635366991}
+  - {fileID: 553262128}
   - {fileID: 1008989359}
   - {fileID: 28376137}

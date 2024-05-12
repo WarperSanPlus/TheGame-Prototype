@@ -35,7 +35,7 @@ namespace Controllers
             if (this.cursor == null)
                 return;
 
-            if (Interfaces.Interactable.CanInteract(this.transform.position, this.cameraAnchor.forward, this.interactRange))
+            if (Interfaces.Interactable.CanInteract(this.cameraAnchor.position, this.cameraAnchor.forward, this.interactRange))
             {
                 this.cursor.sprite = this.interactCursor;
                 this.cursor.rectTransform.sizeDelta = new Vector2(50, 50);
@@ -179,7 +179,7 @@ namespace Controllers
         protected override void OnMove(Vector2 direction) => this.direction = direction;
 
         /// <inheritdoc/>
-        protected override void OnFireStart() => Interfaces.Interactable.TryInteract(this.transform.position, this.cameraAnchor.forward, this.interactRange);
+        protected override void OnFireStart() => Interfaces.Interactable.TryInteract(this.cameraAnchor.position, this.cameraAnchor.forward, this.interactRange);
 
         /// <inheritdoc/>
         protected override void OnSwitchIn()
