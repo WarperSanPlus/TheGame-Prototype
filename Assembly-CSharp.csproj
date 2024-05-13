@@ -67,6 +67,7 @@
     <Compile Include="Assets/Scripts/Utilities/PlaneGenerator.cs" />
     <Compile Include="Assets/Scripts/Utilities/RotateByVector.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/AnimationNode.cs" />
+    <Compile Include="Assets/GolemAnimationEvents.cs" />
     <Compile Include="Assets/Scripts/Projectiles/Projectile.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/DistanceNode.cs" />
     <Compile Include="Assets/Scripts/CameraMovement.cs" />

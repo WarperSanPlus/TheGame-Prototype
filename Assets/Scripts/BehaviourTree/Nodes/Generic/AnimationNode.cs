@@ -27,20 +27,15 @@ namespace BehaviourTree.Nodes.Generic
         /// <inheritdoc/>
         public override NodeState Evaluate()
         {
-            this.animationTime -= Time.deltaTime;
-
-            if (this.animationTime <= 0)
-                this.delay -= Time.deltaTime;
-
-            if (this.delay <= 0)
+            if (Time.time > this.delay)
             {
                 this.OnAnimationStart(this.animator);
 
-                this.delay = this.Delay;
-                this.animationTime = this.ClipLength;
+                this.animationTime = Time.time + this.ClipLength;
+                this.delay = this.animationTime + this.Delay;
             }
 
-            return this.animationTime <= 0 ? NodeState.FAILURE : NodeState.SUCCESS;
+            return Time.time >= this.animationTime ? NodeState.FAILURE : NodeState.SUCCESS;
         }
 
         #endregion

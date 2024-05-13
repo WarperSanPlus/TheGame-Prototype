@@ -13,23 +13,18 @@ namespace BehaviourTree.Trees
         }
 
         public Transform target1;
-        public float throwMinRange;
-        public float throwMaxRange;
         public float walkMinRange;
         public float walkMaxRange;
-        public float stompMinRange;
 
         protected override Node SetUpTree()
         {
             var target = "currentTarget";
 
             var root = new Selector(
-                //this.Throw(target, this.throwMinRange, this.throwMaxRange),
-                //new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE),
+                this.Throw(target, this.throwMinRange, this.throwMaxRange),
                 this.WalkToTarget(target, this.walkMinRange, this.walkMaxRange),
-                new CallbackNode(n => this.SetWalking(false), NodeState.FAILURE)
-                //this.Stomp(target, this.stompMinRange),
-                //new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE)
+                this.CancelWalk(),
+                this.Stomp(target, this.stompMinRange)
             );
 
             root.SetData(MoveToTarget.SPEED, 0.01f);
@@ -37,6 +32,83 @@ namespace BehaviourTree.Trees
 
             return root;
         }
+
+        
+        #region Animation
+
+        [Header("Animation")]
+        [SerializeField]
+        private Animator animator;
+
+
+        private static void SetAttack(Animator animator, GolemAttackFlags attack)
+        {
+            animator.SetInteger("Attack", (int)attack);
+            animator.SetBool("IsAttacking", attack != GolemAttackFlags.None);
+        }
+
+        #endregion
+
+        #region Throw
+
+        [Header("Throw")]
+        [SerializeField]
+        private AnimationClip throwAnimation;
+        public float throwMinRange;
+        public float throwMaxRange;
+
+        private Node Throw(string target, float minDistance, float maxDistance)
+        {
+            var minLimit = new DistanceGreater(this.transform, target, minDistance);
+            var maxLimit = new DistanceSmaller(this.transform, target, maxDistance);
+            var action = new AnimationNode(this.animator, 2f, this.throwAnimation.length, a => SetAttack(a, GolemAttackFlags.Throw));
+
+            return new Selector(
+                new Sequence(
+                    // Has to be more than minDistance
+                    minLimit,
+
+                    // Has to be less than maxDistance
+                    maxLimit,
+
+                    // If far enough, do action
+                    action
+                ),
+                new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE),
+                this.CancelWalk()
+            );
+        }
+
+        #endregion
+
+        #region Stomp
+
+        [Header("Stomp")]
+        [SerializeField]
+        private AnimationClip stompAnimation;
+        public float stompMinRange;
+
+        private Node Stomp(string target, float minDistance)
+        {
+            var distanceLimit = new DistanceSmaller(this.transform, target, minDistance);
+            var action = new AnimationNode(this.animator, 1f, this.stompAnimation.length, a => SetAttack(a, GolemAttackFlags.Stomp));
+
+            return new Selector(
+                new Sequence(
+                    // Needs to be less than minDistance
+                    distanceLimit,
+
+                    // If near enough, do action
+                    action
+                ),
+                new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE),
+                this.CancelWalk()
+            );
+        }
+
+        #endregion
+
+        #region Walk
 
         private Node WalkToTarget(string target, float minDistance, float maxDistance)
         {
@@ -59,51 +131,9 @@ namespace BehaviourTree.Trees
             );
         }
 
-        private Node Stomp(string target, float minDistance)
-        {
-            var distanceLimit = new DistanceSmaller(this.transform, target, minDistance);
-            var action = new AnimationNode(this.animator, 1f, 1.667f, a => SetAttack(a, GolemAttackFlags.Stomp));
-
-            return new Sequence(
-                // Needs to be less than minDistance
-                distanceLimit,
-
-                // If near enough, do action
-                action
-            );
-        }
-
-        private Node Throw(string target, float minDistance, float maxDistance)
-        {
-            var minLimit = new DistanceGreater(this.transform, target, minDistance);
-            var maxLimit = new DistanceSmaller(this.transform, target, maxDistance);
-            var action = new AnimationNode(this.animator, 2f, 2.917f, a => SetAttack(a, GolemAttackFlags.Throw));
-
-            return new Sequence(
-                // Has to be more than minDistance
-                minLimit,
-
-                // Has to be less than maxDistance
-                maxLimit,
-
-                // If far enough, do action
-                action
-            );
-        }
-
-        #region Animation
-
-        [Header("Animation")]
-        [SerializeField]
-        private Animator animator;
-
         private void SetWalking(bool IsWalking) => this.animator.SetBool("IsWalking", IsWalking);
 
-        private static void SetAttack(Animator animator, GolemAttackFlags attack)
-        {
-            animator.SetInteger("Attack", (int)attack);
-            animator.SetBool("IsAttacking", attack != GolemAttackFlags.None);
-        }
+        private Node CancelWalk() => new CallbackNode(n => this.SetWalking(false), NodeState.FAILURE);
 
         #endregion
 
