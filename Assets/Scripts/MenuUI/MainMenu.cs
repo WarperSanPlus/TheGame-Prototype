@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("BoatTestScene");
+        SceneManager.LoadScene("GameScene");
 
         this.menuCanvas.SetActive(false);
     }

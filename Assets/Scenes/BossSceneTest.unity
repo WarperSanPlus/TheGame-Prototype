@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &105097397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5429075170835585289, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+  m_PrefabInstance: {fileID: 3968625707911353434}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291778883
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +330,7 @@ Transform:
   m_GameObject: {fileID: 1001714825}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3}
+  m_LocalPosition: {x: 0, y: 0, z: 33.75}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -381,6 +386,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001714825}
   m_Mesh: {fileID: 2229083726213255389, guid: 2fe37a76edd348249851fa214e2aa89a, type: 3}
+--- !u!1 &1402818928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1402818929}
+  - component: {fileID: 1402818930}
+  m_Layer: 0
+  m_Name: RockProjectile Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1402818929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402818928}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1402818930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402818928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 382ba039df4291c8b86b743614d2caa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 105097397}
+  preAmount: 3
+  hardCap: 2147483647
 --- !u!1 &1880339489
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,6 +527,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &3968625707911353434
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5429075170835585289, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_Name
+      value: RockProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6094330281053228821, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
 --- !u!1001 &8094863888122597628
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -643,6 +752,10 @@ PrefabInstance:
       propertyPath: target1
       value: 
       objectReference: {fileID: 1001714826}
+    - target: {fileID: 8189963055609797426, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
+      propertyPath: throwProjectile
+      value: 
+      objectReference: {fileID: 105097397}
     - target: {fileID: 8500438403803581115, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 61.770508
@@ -681,3 +794,5 @@ SceneRoots:
   - {fileID: 8094863888122597628}
   - {fileID: 1001714826}
   - {fileID: 535587311}
+  - {fileID: 1402818929}
+  - {fileID: 3968625707911353434}

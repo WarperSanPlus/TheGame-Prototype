@@ -49,9 +49,10 @@ MonoBehaviour:
   walkMinRange: 7.5
   walkMaxRange: 30
   animator: {fileID: 1196335952294009338}
+  throwAnimation: {fileID: 7400000, guid: ded14a481a1fa6599868c135aa7bc22d, type: 2}
   throwMinRange: 15
   throwMaxRange: 40
-  throwAnimation: {fileID: 7400000, guid: ded14a481a1fa6599868c135aa7bc22d, type: 2}
+  stompAnimation: {fileID: 7400000, guid: 4d86362051d9735b5a6c3797bd63f524, type: 2}
   stompMinRange: 3
 --- !u!1 &6428552109735919421
 GameObject:
@@ -392,6 +393,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 116c086ce747da11280dbbe346ea9257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tree: {fileID: 8177382136165767583}
+  throwProjectile: {fileID: 5429075170835585289, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+  throwSource: {fileID: 3216471108707573592}
+  throwForce: {x: -150, y: 300, z: 1200}
 --- !u!4 &5094513453679283638 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8152904112701168715, guid: c82321bf7a4aab60e91f3661f4012658, type: 3}

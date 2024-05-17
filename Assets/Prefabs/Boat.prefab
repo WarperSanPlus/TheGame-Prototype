@@ -2535,18 +2535,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraAnchor: {fileID: 7233390371357256338}
   sensitivity: 7.5
-  maxAngles: {x: 60, y: 60, z: 0}
-  clampAxis: {x: 1, y: 1, z: 0}
+  maxAngles: {x: 60, y: 180, z: 0}
+  clampAxis: {x: 1, y: 0, z: 0}
   rotateWithController: 1
   disableIfOut: 0
   icons:
   - {fileID: 8423580865570998670}
   - {fileID: 4142489962262532680}
-  movementSpeed: 1
+  movementSpeed: 2
   movementAcceleration: 0.01
   movementDeceleration: 0.005
   waveOffset: 0.2
-  turningSpeed: 10
+  turningSpeed: 20
   wheel: {fileID: 697749650381001418}
 --- !u!54 &5918518606511605004
 Rigidbody:
