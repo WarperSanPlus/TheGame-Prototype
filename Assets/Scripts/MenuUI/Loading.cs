@@ -22,7 +22,7 @@ public class Loading : MonoBehaviour
         this.pauseTimes = new List<float>();
         for (int i = 0; i < 2; i++)
         {
-            pauseTimes.Add(Random.Range(0, this.simulatedTimeToLoad));
+            this.pauseTimes.Add(Random.Range(0, this.simulatedTimeToLoad));
         }
         this.pauseTimes.Sort();
 
