@@ -50,7 +50,7 @@ namespace Controllers
             // Update positions
             var diff = newPosition - this.transform.position;
             this.transform.position = newPosition;
-            this.UpdateAboard(diff);
+            this.UpdateAboardPosition(diff);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Controllers
         /// <summary>
         /// Updates the position of all the items aboard
         /// </summary>
-        private void UpdateAboard(Vector3 movement)
+        private void UpdateAboardPosition(Vector3 movement)
         {
             foreach (var item in this.aboardItems)
             {
@@ -93,6 +93,20 @@ namespace Controllers
                     continue;
 
                 item.MovePosition(item.position + movement);
+            }
+        }
+
+        /// <summary>
+        /// Updates the rotation of all the items aboard
+        /// </summary>
+        private void UpdateAboardRotation(Vector3 rotation)
+        {
+            foreach (var item in this.aboardItems)
+            {
+                if (item == null)
+                    continue;
+
+                item.transform.Rotate(rotation);
             }
         }
 
@@ -118,6 +132,7 @@ namespace Controllers
             var amount = this.direction.x * this.turningSpeed;
 
             this.transform.Rotate(amount * elapsed * Vector3.up);
+            this.UpdateAboardRotation(amount * elapsed * Vector3.up);
         }
 
         #endregion

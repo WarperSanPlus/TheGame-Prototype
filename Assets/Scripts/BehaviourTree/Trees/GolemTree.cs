@@ -10,6 +10,7 @@ namespace BehaviourTree.Trees
             None = 0,
             Throw = 1,
             Stomp = 2,
+            RageThrow = 3,
         }
 
         public Transform target1;
@@ -20,11 +21,23 @@ namespace BehaviourTree.Trees
         {
             var target = "currentTarget";
 
-            var root = new Selector(
-                this.Throw(target, this.throwMinRange, this.throwMaxRange),
-                this.WalkToTarget(target, this.walkMinRange, this.walkMaxRange),
+            var attacks = new Selector(
                 this.CancelWalk(),
-                this.Stomp(target, this.stompMinRange)
+                this.RageThrow(),
+                this.Throw(target, this.throwMinRange, this.throwMaxRange),
+                this.Stomp(target, this.stompMinRange),
+                new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE)
+            );
+
+            var root = new Selector(
+                attacks,
+                
+                new Parallel(
+                    new RotateToTarget(this.transform, target),
+                    new StableStateNode(NodeState.FAILURE)
+                ),
+                this.WalkToTarget(target, this.walkMinRange, this.walkMaxRange),
+                this.CancelWalk()
             );
 
             root.SetData(MoveToTarget.SPEED, 0.01f);
@@ -33,7 +46,7 @@ namespace BehaviourTree.Trees
             return root;
         }
 
-        
+
         #region Animation
 
         [Header("Animation")]
@@ -74,7 +87,6 @@ namespace BehaviourTree.Trees
                     // If far enough, do action
                     action
                 ),
-                new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE),
                 this.CancelWalk()
             );
         }
@@ -91,7 +103,7 @@ namespace BehaviourTree.Trees
         private Node Stomp(string target, float minDistance)
         {
             var distanceLimit = new DistanceSmaller(this.transform, target, minDistance);
-            var action = new AnimationNode(this.animator, 1f, this.stompAnimation.length, a => SetAttack(a, GolemAttackFlags.Stomp));
+            var action = new AnimationNode(this.animator, 2f, this.stompAnimation.length, a => SetAttack(a, GolemAttackFlags.Stomp));
 
             return new Selector(
                 new Sequence(
@@ -101,7 +113,26 @@ namespace BehaviourTree.Trees
                     // If near enough, do action
                     action
                 ),
-                new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE),
+                this.CancelWalk()
+            );
+        }
+
+        #endregion
+
+        #region Rage Throw
+
+        [Header("Rage Throw")]
+        [SerializeField]
+        private AnimationClip rageThrowAnimation;
+        private Node RageThrow()
+        {
+            var action = new AnimationNode(this.animator, 30f, this.rageThrowAnimation.length * 5, a => SetAttack(a, GolemAttackFlags.RageThrow));
+
+            return new Selector(
+                new Sequence(
+                    // If far enough, do action
+                    action
+                ),
                 this.CancelWalk()
             );
         }
@@ -114,10 +145,6 @@ namespace BehaviourTree.Trees
         {
             var minLimit = new DistanceGreater(this.transform, target, minDistance);
             var maxLimit = new DistanceSmaller(this.transform, target, maxDistance);
-            var action = new Parallel(
-                new RotateToTarget(this.transform, target),
-                new MoveToTarget(this.transform, target, this.SetWalking)
-            );
 
             return new Sequence(
                 // Has to be more than minDistance
@@ -127,7 +154,7 @@ namespace BehaviourTree.Trees
                 maxLimit,
 
                 // If far enough, do action
-                action
+                new MoveToTarget(this.transform, target, this.SetWalking)
             );
         }
 

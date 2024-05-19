@@ -8,7 +8,7 @@ namespace BehaviourTree.Nodes.Generic
         private readonly System.Func<Node, NodeState> CallBack;
 
         public CallbackNode(System.Action<Node> callback, NodeState state) : this(n => {
-            callback(n);
+            callback?.Invoke(n);
             return state;
         }) {}
 

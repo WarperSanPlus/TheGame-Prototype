@@ -72,6 +72,7 @@
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/DistanceNode.cs" />
     <Compile Include="Assets/Scripts/CameraMovement.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Selector.cs" />
+    <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/StableStateNode.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Node.cs" />
     <Compile Include="Assets/Scripts/Object Pools/ObjectPool.cs" />
     <Compile Include="Assets/Scripts/AudioObject.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets/Scripts/Controllers/PlayerController.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Tree.cs" />
     <Compile Include="Assets/Scripts/Singletons/PauseMenu.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/DestroyableProjectile.cs" />
     <Compile Include="Assets/Scripts/Utilities/MoveByVector.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/CallbackNode.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Trees/GolemTree.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Assets/Scripts/WorldIcon.cs" />
     <Compile Include="Assets/Scripts/Interfaces/Interactable.cs" />
     <Compile Include="Assets/Scripts/Controllers/Controller.cs" />
+    <Compile Include="Assets/Scripts/Extensions/ProjectileExtensions.cs" />
     <Compile Include="Assets/Scripts/Utilities/FollowTarget.cs" />
     <Compile Include="Assets/Scripts/WheelSteer.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Parallel.cs" />

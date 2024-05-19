@@ -27,7 +27,8 @@ namespace BehaviourTree.Nodes.Generic
                 return NodeState.SUCCESS;
 
             // Rotate self towards target
-            this.self.LookAt(target);
+            var targetRotation = Quaternion.LookRotation(target.position - this.self.position);
+            this.self.rotation = Quaternion.RotateTowards(this.self.rotation, targetRotation, 45 * Time.deltaTime);
 
             return NodeState.RUNNING;
         }
