@@ -86,6 +86,7 @@ namespace Controllers
             InputMaster.Instance.OnFireStart += this.OnFireStart;
             InputMaster.Instance.OnFireEnd += this.OnFireEnd;
             InputMaster.Instance.OnInteract += this.OnInteract;
+            InputMaster.Instance.OnPause += this.OnPause;
 
             // Update enable states
             this.IsEnabled = true;
@@ -106,6 +107,7 @@ namespace Controllers
             InputMaster.Instance.OnFireStart -= this.OnFireStart;
             InputMaster.Instance.OnFireEnd -= this.OnFireEnd;
             InputMaster.Instance.OnInteract -= this.OnInteract;
+            InputMaster.Instance.OnPause -= this.OnPause;
 
             // Update enable states
             this.IsEnabled = false;
@@ -142,6 +144,12 @@ namespace Controllers
         /// Called when the player releases the 'Fire' button
         /// </summary>
         protected virtual void OnFireEnd() {}
+
+        #endregion
+
+        #region Pause
+
+        protected virtual void OnPause() { }
 
         #endregion
 
@@ -223,5 +231,6 @@ namespace Controllers
         }
 
         #endregion
+
     }
 }
