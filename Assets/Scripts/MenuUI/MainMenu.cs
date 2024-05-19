@@ -23,9 +23,9 @@ public class MainMenu : MonoBehaviour
 
     public void StartShootingRange()
     {
-        //PlayerPrefs.SetString("LevelToLoad", "CannonTestScene");
-        //PlayerPrefs.Save();
-        //SceneManager.LoadScene("LoadingScreen");
+        PlayerPrefs.SetString("LevelToLoad", "CannonTestScene");
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("LoadingScreen");
         //SceneManager.LoadScene("CannonTestScene");
 
         this.menuCanvas.SetActive(false);
