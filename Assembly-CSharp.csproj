@@ -76,12 +76,14 @@
     <Compile Include="Assets/Scripts/BehaviourTree/Node.cs" />
     <Compile Include="Assets/Scripts/Object Pools/ObjectPool.cs" />
     <Compile Include="Assets/Scripts/AudioObject.cs" />
+    <Compile Include="Assets/Scripts/MenuUI/Loading.cs" />
     <Compile Include="Assets/Scripts/Extensions/VectorExtensions.cs" />
     <Compile Include="Assets/Scripts/Controllers/BoatController.cs" />
     <Compile Include="Assets/Scripts/Object Pools/TTD.cs" />
     <Compile Include="Assets/Scripts/InteractScripts/BoatWheelInteract.cs" />
     <Compile Include="Assets/Scripts/Controllers/PlayerController.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Tree.cs" />
+    <Compile Include="Assets/Scripts/Singletons/PauseMenu.cs" />
     <Compile Include="Assets/Scripts/Projectiles/DestroyableProjectile.cs" />
     <Compile Include="Assets/Scripts/Utilities/MoveByVector.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/CallbackNode.cs" />
@@ -107,7 +109,6 @@
     <Compile Include="Assets/Juan/Juan.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/DistanceGreater.cs" />
     <Compile Include="Assets/Scripts/Extensions/TransformExtensions.cs" />
-    <Compile Include="Assets/Scripts/MenuUI/PauseMenu.cs" />
     <Compile Include="Assets/Scripts/Interfaces/IDespawnable.cs" />
     <Compile Include="Assets/Scripts/DeathPlane.cs" />
     <Compile Include="Assets/Scripts/Interfaces/ICollidable.cs" />

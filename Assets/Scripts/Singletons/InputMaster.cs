@@ -14,6 +14,7 @@ namespace Singletons
         public delegate void MoveEvent(Vector2 direction);
         public delegate void FireEvent();
         public delegate void InteractEvent();
+        public delegate void PauseEvent();
 
         #endregion
 
@@ -24,6 +25,7 @@ namespace Singletons
         public event FireEvent OnFireStart;
         public event FireEvent OnFireEnd;
         public event InteractEvent OnInteract;
+        public event PauseEvent OnPause;
 
         #endregion
 
@@ -54,6 +56,12 @@ namespace Singletons
         public void Interact(InputAction.CallbackContext context)
         {
             this.OnInteract?.Invoke();
+        }
+
+        public void Pause(InputAction.CallbackContext context)
+        {
+            if (context.started)
+                this.OnPause?.Invoke();
         }
 
         #endregion

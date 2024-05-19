@@ -14,14 +14,19 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("GameScene");
-
+        PlayerPrefs.SetString("LevelToLoad", "BoatTestScene");
+        PlayerPrefs.Save();
+        SceneManager.LoadScene("LoadingScreen");
+        
         this.menuCanvas.SetActive(false);
     }
 
     public void StartShootingRange()
     {
-        SceneManager.LoadScene("CannonTestScene");
+        //PlayerPrefs.SetString("LevelToLoad", "CannonTestScene");
+        //PlayerPrefs.Save();
+        //SceneManager.LoadScene("LoadingScreen");
+        //SceneManager.LoadScene("CannonTestScene");
 
         this.menuCanvas.SetActive(false);
     }
