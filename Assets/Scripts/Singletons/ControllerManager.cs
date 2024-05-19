@@ -9,6 +9,13 @@ namespace Singletons
     /// </summary>
     public class ControllerManager : Singleton<ControllerManager>
     {
+        #region Singleton
+
+        /// <inheritdoc/>
+        protected override bool DestroyOnLoad => true;
+
+        #endregion
+
         /// <summary>
         /// List of the controllers used
         /// </summary>

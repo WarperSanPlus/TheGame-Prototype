@@ -11,7 +11,6 @@ namespace Controllers
     [RequireComponent(typeof(Animator))]
     public class PlayerController : Controller
     {
-        [SerializeField] PauseMenu pauseMenu;
         #region Cursor 
 
         [Header("Cursor")]
@@ -207,7 +206,6 @@ namespace Controllers
             this.SetVisible(false);
         }
 
-        protected override void OnPause() => this.pauseMenu.Pause();
         #endregion
     }
 }

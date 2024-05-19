@@ -9,6 +9,40 @@ namespace Controllers
     /// </summary>
     public abstract class Controller : MonoBehaviour
     {
+        #region Events
+
+        private void Subscribe()
+        {
+            var input = InputMaster.Instance;
+
+            if (input == null)
+                return;
+
+            input.OnLook += this.OnLook;
+            input.OnMove += this.OnMove;
+            input.OnFireStart += this.OnFireStart;
+            input.OnFireEnd += this.OnFireEnd;
+            input.OnInteract += this.OnInteract;
+            input.OnPause += this.Pause;
+        }
+
+        private void UnSubscribe()
+        {
+            var input = InputMaster.Instance;
+
+            if (input == null)
+                return;
+
+            input.OnLook -= this.OnLook;
+            input.OnMove -= this.OnMove;
+            input.OnFireStart -= this.OnFireStart;
+            input.OnFireEnd -= this.OnFireEnd;
+            input.OnInteract -= this.OnInteract;
+            input.OnPause -= this.Pause;
+        }
+
+        #endregion
+
         /// <summary>
         /// Called when the player moves
         /// </summary>
@@ -81,12 +115,7 @@ namespace Controllers
         public void SwitchIn()
         {
             // Subscribe all
-            InputMaster.Instance.OnLook += this.OnLook;
-            InputMaster.Instance.OnMove += this.OnMove;
-            InputMaster.Instance.OnFireStart += this.OnFireStart;
-            InputMaster.Instance.OnFireEnd += this.OnFireEnd;
-            InputMaster.Instance.OnInteract += this.OnInteract;
-            InputMaster.Instance.OnPause += this.OnPause;
+            this.Subscribe();
 
             // Update enable states
             this.IsEnabled = true;
@@ -102,12 +131,7 @@ namespace Controllers
         public void SwitchOut()
         {
             // Unsubscribe all
-            InputMaster.Instance.OnLook -= this.OnLook;
-            InputMaster.Instance.OnMove -= this.OnMove;
-            InputMaster.Instance.OnFireStart -= this.OnFireStart;
-            InputMaster.Instance.OnFireEnd -= this.OnFireEnd;
-            InputMaster.Instance.OnInteract -= this.OnInteract;
-            InputMaster.Instance.OnPause -= this.OnPause;
+            this.UnSubscribe();
 
             // Update enable states
             this.IsEnabled = false;
@@ -149,7 +173,25 @@ namespace Controllers
 
         #region Pause
 
+        private void Pause()
+        {
+            PauseMenu.Pause();
+
+            if (PauseMenu.IsPaused())
+                this.OnPause();
+            else
+                this.OnResumed();
+        }
+
+        /// <summary>
+        /// Called when the player paused the game
+        /// </summary>
         protected virtual void OnPause() { }
+
+        /// <summary>
+        /// Called when the player resumed the game
+        /// </summary>
+        protected virtual void OnResumed() { }
 
         #endregion
 
@@ -207,6 +249,9 @@ namespace Controllers
         /// </summary>
         /// <param name="elapsed">Time passed since the last call</param>
         protected virtual void OnFixedUpdate(float elapsed) { }
+
+        /// <inheritdoc/>
+        private void OnDestroy() => this.UnSubscribe();
 
         #endregion
 
