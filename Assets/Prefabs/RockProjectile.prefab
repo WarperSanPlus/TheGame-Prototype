@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 9122957290087634043}
   - component: {fileID: 1988373325200186962}
   - component: {fileID: 9078397901678863372}
+  - component: {fileID: 670636571316212246}
   m_Layer: 0
   m_Name: RockProjectile
   m_TagString: Untagged
@@ -162,7 +163,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db2a666a1283a0e53a36054e1a18d193, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 4
+  time: 10
+--- !u!114 &670636571316212246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429075170835585289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 867d03ef2fb346f5c835d0b0cdfda81f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 8370866815602406087, guid: 868282786ec90ca318cc5cdfeca19188, type: 3}
 --- !u!1001 &7316816365007091627
 PrefabInstance:
   m_ObjectHideFlags: 0

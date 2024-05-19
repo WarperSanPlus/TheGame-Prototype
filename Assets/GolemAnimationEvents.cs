@@ -5,6 +5,7 @@ public class GolemAnimationEvents : MonoBehaviour
 {
     #region Throw
 
+    [Header("Throw")]
     [SerializeField, Tooltip("Prefab to throw")]
     private GameObject throwProjectile;
     
@@ -47,4 +48,49 @@ public class GolemAnimationEvents : MonoBehaviour
     {
 
     }
+
+    #region Rage Throw
+
+    [Header("Rage Throw")]
+    [SerializeField]
+    private GameObject[] rageThrowProjectiles;
+
+    [SerializeField]
+    private Transform[] rageThrowSources;
+
+    public void ExecuteRageThrow()
+    {
+        // If source is invalid, skip
+        if (this.rageThrowSources.Length == 0)
+            return;
+
+        var obj = ObjectPools.ObjectPool.GetObject(this.rageThrowProjectiles[Random.Range(0, this.rageThrowProjectiles.Length)]);
+
+        // If projectile invalid, skip
+        if (obj == null)
+            return;
+
+        obj.transform.position = this.rageThrowSources[Random.Range(0, this.rageThrowProjectiles.Length)].position;
+
+        if (obj.TryGetComponent(out Projectiles.Projectile projectile) && obj.TryGetComponent(out Rigidbody rb))
+        {
+            var angle = Random.Range(0, 360) * Mathf.Deg2Rad;
+            var distance = Random.Range(10, 50);
+            rb.velocity = projectile.GetLaunch(this.transform.position + (new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance), Random.Range(10, 50));
+        }
+    }
+
+    #endregion
+
+    #region Spawn
+
+    public void SetSpawning()
+    {
+        if (!this.TryGetComponent(out Animator animator))
+            return;
+
+        animator.SetBool("isSpawning", false);
+    }
+
+    #endregion
 }

@@ -82,6 +82,7 @@
     <Compile Include="Assets/Scripts/InteractScripts/BoatWheelInteract.cs" />
     <Compile Include="Assets/Scripts/Controllers/PlayerController.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Tree.cs" />
+    <Compile Include="Assets/Scripts/Projectiles/DestroyableProjectile.cs" />
     <Compile Include="Assets/Scripts/Utilities/MoveByVector.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Nodes/Generic/CallbackNode.cs" />
     <Compile Include="Assets/Scripts/BehaviourTree/Trees/GolemTree.cs" />

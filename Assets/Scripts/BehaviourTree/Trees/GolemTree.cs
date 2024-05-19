@@ -10,6 +10,7 @@ namespace BehaviourTree.Trees
             None = 0,
             Throw = 1,
             Stomp = 2,
+            RageThrow = 3,
         }
 
         public Transform target1;
@@ -22,6 +23,7 @@ namespace BehaviourTree.Trees
 
             var attacks = new Selector(
                 this.CancelWalk(),
+                this.RageThrow(),
                 this.Throw(target, this.throwMinRange, this.throwMaxRange),
                 this.Stomp(target, this.stompMinRange),
                 new CallbackNode(n => SetAttack(this.animator, GolemAttackFlags.None), NodeState.FAILURE)
@@ -109,6 +111,26 @@ namespace BehaviourTree.Trees
                     distanceLimit,
 
                     // If near enough, do action
+                    action
+                ),
+                this.CancelWalk()
+            );
+        }
+
+        #endregion
+
+        #region Rage Throw
+
+        [Header("Rage Throw")]
+        [SerializeField]
+        private AnimationClip rageThrowAnimation;
+        private Node RageThrow()
+        {
+            var action = new AnimationNode(this.animator, 30f, this.rageThrowAnimation.length * 5, a => SetAttack(a, GolemAttackFlags.RageThrow));
+
+            return new Selector(
+                new Sequence(
+                    // If far enough, do action
                     action
                 ),
                 this.CancelWalk()

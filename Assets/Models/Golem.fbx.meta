@@ -130,10 +130,10 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Defence1
+      name: Circle
       takeName: Armature|Defence1
       internalID: 313677756170909654
-      firstFrame: 0
+      firstFrame: 25
       lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
@@ -141,7 +141,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -246,7 +246,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|IdlePieces
+      name: Spawn In
       takeName: Armature|IdlePieces
       internalID: -7377625503026327429
       firstFrame: 0
