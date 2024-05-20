@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        PlayerPrefs.SetString("LevelToLoad", "BoatTestScene");
+        PlayerPrefs.SetString("LevelToLoad", "GameScene");
         PlayerPrefs.Save();
         SceneManager.LoadScene("LoadingScreen");
         
@@ -26,7 +26,6 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.SetString("LevelToLoad", "CannonTestScene");
         PlayerPrefs.Save();
         SceneManager.LoadScene("LoadingScreen");
-        //SceneManager.LoadScene("CannonTestScene");
 
         this.menuCanvas.SetActive(false);
     }

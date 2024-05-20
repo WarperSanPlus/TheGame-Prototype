@@ -19,7 +19,7 @@ namespace Singletons
 
         public void Start_MainMenu() => Start_Scene("MainMenuScreen");
         public void Start_ShootingRange() => Start_Scene("CannonTestScene");
-        public void Start_Game() => Start_Scene("BoatTestScene");
+        public void Start_Game() => Start_Scene("GameScene");
 
         private static void Start_Scene(string name)
         {
