@@ -75,3 +75,6 @@ https://sketchfab.com/3d-models/projectile-skewer-ball-3987c69127594abb8600745d6
 
 Lava Ball:
 https://sketchfab.com/3d-models/projectile-magma-ball-915c10ddb81543eeaa122f7e159eccc5
+
+Ship Icon:
+https://game-icons.net/1x1/delapouite/sailboat.html

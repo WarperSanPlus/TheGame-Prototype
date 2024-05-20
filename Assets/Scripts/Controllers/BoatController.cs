@@ -2,6 +2,7 @@ using Extensions;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 namespace Controllers
 {
     /// <summary>
@@ -9,6 +10,7 @@ namespace Controllers
     /// </summary>
     public class BoatController : Controller
     {
+        
         #region Move
 
         [Header("Move")]
@@ -238,5 +240,7 @@ namespace Controllers
         }
 
         #endregion
+
+        
     }
 }

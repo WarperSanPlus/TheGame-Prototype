@@ -101,6 +101,7 @@
     <Compile Include="Assets\Scripts\Singletons\SeagullManager.cs" />
     <Compile Include="Assets\Scripts\BehaviourTree\Nodes\Generic\MoveToTarget.cs" />
     <Compile Include="Assets\Scripts\BehaviourTree\Sequence.cs" />
+    <Compile Include="Assets\Target\Target.cs" />
     <Compile Include="Assets\Juan\Juan.cs" />
     <Compile Include="Assets\Scripts\BehaviourTree\Nodes\Generic\DistanceGreater.cs" />
     <Compile Include="Assets\Scripts\Extensions\TransformExtensions.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="Assets\Scripts\BehaviourTree\Nodes\Generic\DistanceSmaller.cs" />
     <Compile Include="Assets\Scripts\Singletons\InputMaster.cs" />
     <Compile Include="Assets\Scripts\BehaviourTree\Nodes\Generic\RotateToTarget.cs" />
+    <Compile Include="Assets\Scripts\MenuUI\HealthBar.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
