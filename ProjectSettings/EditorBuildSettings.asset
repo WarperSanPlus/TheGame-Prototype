@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadingScreen.unity
     guid: bc12ed916dd242c4ba7938dad82730dc
   - enabled: 1
-    path: Assets/Scenes/BoatTestScene.unity
-    guid: c87388b040d66a66d8dbcd5d997af012
-  - enabled: 1
     path: Assets/Scenes/CannonTestScene.unity
     guid: ef6acbfd2de05f70486d447e82459963
   - enabled: 1
