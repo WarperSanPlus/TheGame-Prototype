@@ -8,7 +8,7 @@ public class GolemAnimationEvents : MonoBehaviour
     [Header("Throw")]
     [SerializeField, Tooltip("Prefab to throw")]
     private GameObject throwProjectile;
-    
+
     [SerializeField, Tooltip("Initial position of the projectile")]
     private Transform throwSource;
 
@@ -77,6 +77,11 @@ public class GolemAnimationEvents : MonoBehaviour
             var angle = Random.Range(0, 360) * Mathf.Deg2Rad;
             var distance = Random.Range(10, 50);
             rb.velocity = projectile.GetLaunch(this.transform.position + (new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance), Random.Range(10, 50));
+            var pos = Random.Range(0, 25) == 0
+                ? this.throwTarget.position
+                : this.transform.position + (new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * distance);
+
+            rb.velocity = projectile.GetLaunch(pos, Random.Range(10, 50));
         }
     }
 

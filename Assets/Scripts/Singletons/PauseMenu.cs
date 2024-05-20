@@ -67,7 +67,7 @@ namespace Singletons
         }
         
         private static void SetPaused(bool isPaused) => Instance.gameObject.SetActive(isPaused);
-        public static bool IsPaused() => Instance?.gameObject.activeInHierarchy ?? false;
+        public static bool IsPaused() => Instance != null && Instance.gameObject != null && Instance.gameObject.activeInHierarchy;
 
         #endregion
     }

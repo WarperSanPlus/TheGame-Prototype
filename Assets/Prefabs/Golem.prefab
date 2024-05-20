@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3618702282297096326}
   - component: {fileID: 8177382136165767583}
+  - component: {fileID: 8434014759356795314}
+  - component: {fileID: 3733785002611629268}
   m_Layer: 9
   m_Name: Golem
   m_TagString: Untagged
@@ -56,6 +58,42 @@ MonoBehaviour:
   stompAnimation: {fileID: 7400000, guid: 4d86362051d9735b5a6c3797bd63f524, type: 2}
   stompMinRange: 10
   rageThrowAnimation: {fileID: 7400000, guid: 84a1b8ed51424dd52b16ecc5862edb97, type: 2}
+--- !u!114 &8434014759356795314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861030146424013697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77ea2f215ecf2f84e936c4663176c95e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  healthBar: {fileID: 4192523333265318685}
+  damageTaken: 5
+--- !u!65 &3733785002611629268
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5861030146424013697}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12.789446, y: 13.598053, z: 9.194272}
+  m_Center: {x: 0, y: 6.2990265, z: 0}
 --- !u!1 &6428552109735919421
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,6 +799,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
+--- !u!114 &4192523333265318685 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6856655891651453841, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
+  m_PrefabInstance: {fileID: 7280466780708503692}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &7163574039918957212 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}

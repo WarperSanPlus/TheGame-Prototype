@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.84764916, g: 0.89685684, b: 0.9499274, a: 1}
+  m_IndirectSpecularColor: {r: 0.84577066, g: 0.8950062, b: 0.94834536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -313,26 +313,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 26173436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &197420371 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5861030146424013697, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
-  m_PrefabInstance: {fileID: 1201785879}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &197420374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 197420371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77ea2f215ecf2f84e936c4663176c95e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  healthBar: {fileID: 1177640578}
-  damageTaken: 10
 --- !u!4 &212659635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5325591823560858918, guid: 87ba6851d412073e5bfc698129e70cef, type: 3}
@@ -1938,17 +1918,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1f9be6a2db380b4b889eed61c3faaba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1177640578 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4192523333265318685, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
-  m_PrefabInstance: {fileID: 1201785879}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1201785879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2413,6 +2382,10 @@ PrefabInstance:
       propertyPath: throwProjectile
       value: 
       objectReference: {fileID: 5429075170835585289, guid: 953e422ed0033b4fd9554088e96d413e, type: 3}
+    - target: {fileID: 8434014759356795314, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
+      propertyPath: damageTaken
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8500438403803581115, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 69.24592
@@ -2448,10 +2421,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5861030146424013697, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 197420374}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5e667e3e49a19f00896c3ceafe89ae4, type: 3}
 --- !u!1 &1218962095
 GameObject:
@@ -2676,7 +2646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1319911762
 Transform:
   m_ObjectHideFlags: 0
@@ -3209,9 +3179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ea2f215ecf2f84e936c4663176c95e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 20
   healthBar: {fileID: 1529951359}
-  damageTaken: 5
+  damageTaken: 1
 --- !u!1 &1789464430
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,9 +3320,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2026163598}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -541.9, y: -262.3}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 30.849976, y: 33.700012}
   m_SizeDelta: {x: 376.47, y: 401.91}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933275519
@@ -4025,27 +3995,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 183.3979
+      value: 183.39789
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 40.691
+      value: 40.69101
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4077,11 +4047,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -432
+      value: 140.75
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -265.65
+      value: 30.350006
       objectReference: {fileID: 0}
     - target: {fileID: 460292212932858384, guid: 777949e87045e264e9ecc47451ab80be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4157,7 +4127,6 @@ MeshCollider:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1750384634}
   - {fileID: 1290190149187648295}
   - {fileID: 726151617}
   - {fileID: 750409172}
@@ -4173,3 +4142,4 @@ SceneRoots:
   - {fileID: 1319911762}
   - {fileID: 26173436}
   - {fileID: 1619691305}
+  - {fileID: 1972735261}

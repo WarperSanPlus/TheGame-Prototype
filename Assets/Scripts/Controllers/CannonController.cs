@@ -67,6 +67,10 @@ namespace Controllers
         /// </summary>
         private void Shoot(float forcePercent)
         {
+            // Skip if game is paused
+            if (PauseMenu.IsPaused())
+                return;
+
             var projectile = ObjectPools.ObjectPool.GetObject(this.ball);
 
             if (projectile == null)
